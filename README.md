@@ -51,8 +51,6 @@ mosquitto_pub -h localhost -t "machines/A1/scrap" -m '{
   "machineId": "A1",
   "scrapIndex": 1, 
   "value": 5,
-  "sumLast60s": 25,
-  "avgLast60s": 3.5,
   "timestamp": "2025-07-30T12:00:00Z"
 }'
 ```
