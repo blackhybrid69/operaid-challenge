@@ -45,7 +45,7 @@ npm install
 ng serve  # Port 4200
 ```
 
-### Testdaten senden
+### Testdaten senden (Durchschnitt und Summe auf 60sec werden dynamisch im Backend kalkuliert)
 ```bash
 mosquitto_pub -h localhost -t "machines/A1/scrap" -m '{
   "machineId": "A1",
