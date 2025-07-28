@@ -1,0 +1,65 @@
+<div class="dashboard-container">
+  <h2>Maschinen-Scrap-Daten (Live)</h2>
+
+  <!-- Filter Section -->
+  <div class="filter-section">
+    <mat-form-field>
+      <mat-label>Maschinen filtern</mat-label>
+      <mat-select multiple (selectionChange)="onMachineFilterChange($event)">
+        <mat-option *ngFor="let machine of allMachines" [value]="machine">{{machine}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Scrap Index filtern</mat-label>
+      <mat-select multiple (selectionChange)="onScrapIndexFilterChange($event)">
+        <mat-option *ngFor="let index of allScrapIndices" [value]="index">Index {{index}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Diagrammtyp</mat-label>
+      <mat-select [(ngModel)]="selectedChartType" (selectionChange)="onChartTypeChange()">
+        <mat-option *ngFor="let type of chartTypes" [value]="type">{{type}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- Chart Display -->
+  <div class="chart-container">
+    <canvas id="chart"></canvas>
+  </div>
+
+  <!-- Data Table -->
+  <div class="table-container">
+    <table mat-table [dataSource]="filteredData">
+      <ng-container matColumnDef="machineId">
+        <th mat-header-cell *matHeaderCellDef>Maschine</th>
+        <td mat-cell *matCellDef="let item">{{item.machineId}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="scrapIndex">
+        <th mat-header-cell *matHeaderCellDef>Scrap Index</th>
+        <td mat-cell *matCellDef="let item">{{item.scrapIndex}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="sumLast60s">
+        <th mat-header-cell *matHeaderCellDef>Summe (60s)</th>
+        <td mat-cell *matCellDef="let item">{{item.sumLast60s}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="avgLast60s">
+        <th mat-header-cell *matHeaderCellDef>Durchschnitt (60s)</th>
+        <td mat-cell *matCellDef="let item">{{item.avgLast60s | number:'1.2-2'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="timestamp">
+        <th mat-header-cell *matHeaderCellDef>Zeitstempel</th>
+        <td mat-cell *matCellDef="let item">{{item.timestamp | date:'medium'}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

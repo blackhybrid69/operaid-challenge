@@ -1,0 +1,37 @@
+.dashboard-container {
+  padding: 20px;
+}
+
+.filter-section {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.chart-container {
+  height: 400px;
+  margin-bottom: 20px;
+}
+
+.table-container {
+  margin-top: 20px;
+}
+
+mat-form-field {
+  min-width: 200px;
+}
+
+table {
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .filter-section {
+    flex-direction: column;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+}
