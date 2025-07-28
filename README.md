@@ -1,7 +1,3 @@
-Hier ist die deutsche Version der Readme mit den gewünschten Anpassungen:
-
----
-
 # OperAID Maschinen-Monitoring Dashboard
 
 ## Hauptfunktionen
